@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Privacy Policy – Gerytos Monitor</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 860px; margin: 40px auto; padding: 0 20px; color: #333; line-height: 1.7; }
+    h1 { color: #1a73e8; border-bottom: 2px solid #1a73e8; padding-bottom: 10px; }
+    h2 { color: #0d47a1; margin-top: 36px; }
+    h3 { color: #1565c0; }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+    th { background: #e3f2fd; text-align: left; padding: 10px; border: 1px solid #90caf9; }
+    td { padding: 10px; border: 1px solid #bbdefb; vertical-align: top; }
+    .badge { display: inline-block; background: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; border-radius: 4px; padding: 2px 8px; font-size: 0.85em; margin-left: 6px; }
+    .last-updated { color: #666; font-size: 0.9em; margin-bottom: 24px; }
+    ul li { margin-bottom: 6px; }
+    a { color: #1a73e8; }
+    footer { margin-top: 60px; padding-top: 20px; border-top: 1px solid #ddd; color: #888; font-size: 0.85em; }
+  </style>
+</head>
+<body>
+
+<h1>Privacy Policy</h1>
+<p class="last-updated"><strong>App:</strong> Gerytos Monitor &nbsp;|&nbsp; <strong>Developer:</strong> Erytos Technologies &nbsp;|&nbsp; <strong>Last Updated:</strong> November 24, 2025</p>
+
+<p>
+  Erytos Technologies ("we", "us", or "our") built the <strong>Gerytos Monitor</strong> app to provide fall detection, vital-sign monitoring, and caregiver alerts using millimetre-wave radar and Bluetooth Low Energy (BLE) hardware. This Privacy Policy explains what data we collect, why we collect it, how we use and protect it, and your rights over it.
+</p>
+<p>
+  By installing or using Gerytos Monitor you agree to this policy. If you do not agree, please uninstall the app.
+</p>
+
+<!-- ───────────────────────────────────────────────── -->
+<h2>1. Information We Collect</h2>
+
+<h3>1.1 Account Information</h3>
+<table>
+  <tr><th>Data</th><th>Purpose</th><th>Stored Where</th></tr>
+  <tr><td>Email address</td><td>Account creation, authentication, password reset</td><td>AWS Cognito (ap-south-1) / Supabase</td></tr>
+  <tr><td>Password (hashed)</td><td>Secure login via AWS Cognito SRP or Supabase Auth</td><td>AWS Cognito / Supabase (never in plain text)</td></tr>
+  <tr><td>Display name (optional)</td><td>Personalising the app UI</td><td>Device local storage (SharedPreferences)</td></tr>
+</table>
+
+<h3>1.2 Caregiver &amp; Resident Preferences</h3>
+<table>
+  <tr><th>Data</th><th>Purpose</th><th>Stored Where</th></tr>
+  <tr><td>Resident name</td><td>Personalising fall-alert messages</td><td>Device local storage only</td></tr>
+  <tr><td>Emergency contact name &amp; phone number(s)</td><td>Sending fall-alert notifications / auto-SOS</td><td>Device local storage only</td></tr>
+  <tr><td>Auto-SOS preference</td><td>Respecting the user's emergency-call setting</td><td>Device local storage only</td></tr>
+</table>
+
+<h3>1.3 Sensor &amp; Telemetry Data</h3>
+<table>
+  <tr><th>Data</th><th>Purpose</th><th>Stored Where</th></tr>
+  <tr><td>Radar point-cloud frames (fall detection, 3-D occupancy)</td><td>Real-time fall detection &amp; alert generation</td><td>Processed on-device; streamed live to AWS IoT Core (temporary, not persisted)</td></tr>
+  <tr><td>Vital signs (breathing rate, heart rate) from radar</td><td>Live vital-sign dashboard &amp; cloud telemetry</td><td>Streamed to AWS IoT Core; displayed in app; not stored long-term</td></tr>
+  <tr><td>Device IP address &amp; device ID</td><td>Connecting the app to the paired Gerytos radar device</td><td>Device local storage; optionally registered in AWS API Gateway</td></tr>
+</table>
+
+<h3>1.4 Network &amp; Connectivity Data</h3>
+<table>
+  <tr><th>Data</th><th>Purpose</th><th>Stored Where</th></tr>
+  <tr><td>Wi-Fi SSID &amp; network state</td><td>Wi-Fi provisioning of the radar device</td><td>Device local storage only; never uploaded</td></tr>
+  <tr><td>Bluetooth device names &amp; MAC addresses</td><td>BLE scan to discover and pair Gerytos hardware</td><td>Held in memory during session; not stored persistently</td></tr>
+</table>
+
+<h3>1.5 Notification Tokens</h3>
+<p>We use <strong>Firebase Cloud Messaging (FCM)</strong> to send fall-alert push notifications. The FCM device token is stored in AWS and used solely to deliver alerts to your device. It is rotated by Firebase and refreshed automatically.</p>
+
+<h3>1.6 Data We Do NOT Collect</h3>
+<ul>
+  <li>Video or audio recordings</li>
+  <li>GPS / precise location data (location permission is required only for BLE scanning on Android — no coordinates are recorded)</li>
+  <li>Contacts, photos, files, or calendar data</li>
+  <li>Advertising identifiers or cross-app tracking identifiers</li>
+  <li>Children's data (the app targets adults aged 18+)</li>
+</ul>
+
+<!-- ───────────────────────────────────────────────── -->
+<h2>2. How We Use Your Data</h2>
+<ul>
+  <li><strong>Core app functionality</strong> – authenticating your account, pairing your Gerytos radar device, displaying live vital signs and fall events on the dashboard.</li>
+  <li><strong>Fall alerts &amp; emergency notifications</strong> – sending push (FCM) and in-app alerts to caregivers when a fall is detected.</li>
+  <li><strong>Device provisioning</strong> – configuring the radar device over BLE or Wi-Fi using the credentials you provide.</li>
+  <li><strong>App improvement</strong> – we may review anonymised crash logs (if crash reporting is added in a future release) to fix bugs.</li>
+  <li>We do <strong>NOT</strong> sell, rent, or share your personal data with advertisers or data brokers.</li>
+</ul>
+
+<!-- ───────────────────────────────────────────────── -->
+<h2>3. Third-Party Services</h2>
+<table>
+  <tr><th>Service</th><th>Provider</th><th>Purpose</th><th>Privacy Policy</th></tr>
+  <tr>
+    <td>AWS Cognito</td><td>Amazon Web Services</td>
+    <td>User authentication &amp; session management</td>
+    <td><a href="https://aws.amazon.com/privacy/" target="_blank">aws.amazon.com/privacy</a></td>
+  </tr>
+  <tr>
+    <td>AWS IoT Core &amp; API Gateway</td><td>Amazon Web Services</td>
+    <td>Live telemetry streaming &amp; device registry</td>
+    <td><a href="https://aws.amazon.com/privacy/" target="_blank">aws.amazon.com/privacy</a></td>
+  </tr>
+  <tr>
+    <td>Firebase Cloud Messaging</td><td>Google LLC</td>
+    <td>Push notifications for fall alerts</td>
+    <td><a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td>
+  </tr>
+  <tr>
+    <td>Supabase (secondary / fallback)</td><td>Supabase Inc.</td>
+    <td>Alternative authentication provider</td>
+    <td><a href="https://supabase.com/privacy" target="_blank">supabase.com/privacy</a></td>
+  </tr>
+</table>
+
+<!-- ───────────────────────────────────────────────── -->
+<h2>4. Permissions Used by the App</h2>
+<table>
+  <tr><th>Android Permission</th><th>Why It Is Needed</th></tr>
+  <tr><td>BLUETOOTH, BLUETOOTH_ADMIN, BLUETOOTH_SCAN, BLUETOOTH_CONNECT, BLUETOOTH_ADVERTISE</td><td>Discovering and communicating with Gerytos BLE radar hardware</td></tr>
+  <tr><td>ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION</td><td>Required by Android OS for BLE scanning (no location data is recorded or uploaded)</td></tr>
+  <tr><td>ACCESS_WIFI_STATE, CHANGE_WIFI_STATE, CHANGE_NETWORK_STATE, CHANGE_WIFI_MULTICAST_STATE</td><td>Wi-Fi provisioning and UDP auto-discovery of the radar device</td></tr>
+  <tr><td>INTERNET</td><td>Cloud authentication and live telemetry streaming</td></tr>
+  <tr><td>POST_NOTIFICATIONS</td><td>Displaying fall-alert push notifications (Android 13+)</td></tr>
+  <tr><td>FOREGROUND_SERVICE, FOREGROUND_SERVICE_CONNECTED_DEVICE, FOREGROUND_SERVICE_DATA_SYNC</td><td>Keeping the BLE/Wi-Fi monitoring service alive in the background</td></tr>
+  <tr><td>WAKE_LOCK</td><td>Preventing the CPU from sleeping while monitoring is active</td></tr>
+  <tr><td>USE_FULL_SCREEN_INTENT, SCHEDULE_EXACT_ALARM, VIBRATE</td><td>Showing emergency fall-alert notifications on the lock screen</td></tr>
+  <tr><td>REQUEST_IGNORE_BATTERY_OPTIMIZATIONS</td><td>Ensuring background monitoring is not killed by the OS</td></tr>
+  <tr><td>RECEIVE_BOOT_COMPLETED</td><td>Auto-restarting the monitoring service after a device reboot</td></tr>
+</table>
+
+<!-- ───────────────────────────────────────────────── -->
+<h2>5. Data Storage &amp; Security</h2>
+<ul>
+  <li>All cloud data is stored in the <strong>AWS ap-south-1 (Mumbai) region</strong>.</li>
+  <li>Data in transit is encrypted using <strong>TLS 1.2+</strong>; data at rest in AWS is encrypted with AES-256.</li>
+  <li>Passwords are never stored in plain text — authentication is handled by AWS Cognito SRP (Secure Remote Password) protocol.</li>
+  <li>FCM tokens and device credentials stored locally are kept in Android's <strong>SharedPreferences</strong> in private app storage (not accessible to other apps).</li>
+  <li>We retain account data only as long as your account is active. Live telemetry streams (radar frames, vital signs) are <strong>not stored persistently</strong> — they are processed in real time and discarded.</li>
+</ul>
+
+<!-- ───────────────────────────────────────────────── -->
+<h2>6. Account &amp; Data Deletion</h2>
+<p>You have the right to delete your account and all associated data at any time.</p>
+
+<h3>Option A — Delete from within the app</h3>
+<ol>
+  <li>Open <strong>Gerytos Monitor</strong>.</li>
+  <li>Go to <strong>Settings</strong> (bottom navigation bar).</li>
+  <li>Tap <strong>Account</strong> &gt; <strong>Delete Account</strong>.</li>
+  <li>Confirm the deletion. Your Cognito / Supabase account, local credentials, and device pairings are permanently removed.</li>
+</ol>
+
+<h3>Option B — Request deletion by email (for users who have uninstalled the app)</h3>
+<ol>
+  <li>Send an email to <a href="mailto:dineshkumarr@erytos.com">dineshkumarr@erytos.com</a> with the subject line: <strong>Account Deletion Request</strong>.</li>
+  <li>Include your registered email address in the body.</li>
+  <li>We will process your request within <strong>14 business days</strong> and confirm once your data has been deleted.</li>
+</ol>
+
+<h3>What is deleted</h3>
+<ul>
+  <li>Your Cognito / Supabase user account and login credentials.</li>
+  <li>All locally stored caregiver preferences, resident names, and emergency contacts (on the device).</li>
+  <li>Device registrations in our AWS backend.</li>
+  <li>FCM push-notification token.</li>
+</ul>
+
+<h3>What may be retained</h3>
+<ul>
+  <li>Anonymised, non-identifiable usage statistics (if collected in future releases) for app-quality improvement — these cannot be linked back to you.</li>
+  <li>Records required by applicable law (e.g., billing records for a maximum of 7 years per Indian IT Act and tax regulations) — only where legally mandated.</li>
+</ul>
+
+<!-- ───────────────────────────────────────────────── -->
+<h2>7. Children's Privacy</h2>
+<p>Gerytos Monitor is intended for use by adults (18 years and older) and their professional caregivers. We do not knowingly collect data from children under 13 (or under 16 in the EU/EEA). If you believe a child has provided us with personal information, please contact us immediately at <a href="mailto:dineshkumarr@erytos.com">dineshkumarr@erytos.com</a>.</p>
+
+<!-- ───────────────────────────────────────────────── -->
+<h2>8. Your Rights</h2>
+<p>Depending on your jurisdiction, you may have the right to:</p>
+<ul>
+  <li><strong>Access</strong> the personal data we hold about you.</li>
+  <li><strong>Correct</strong> inaccurate or incomplete data.</li>
+  <li><strong>Delete</strong> your account and data (see Section 6).</li>
+  <li><strong>Port</strong> your data in a machine-readable format.</li>
+  <li><strong>Object</strong> to or restrict certain processing activities.</li>
+  <li><strong>Withdraw consent</strong> at any time where processing is based on consent.</li>
+</ul>
+<p>To exercise any of these rights, email us at <a href="mailto:dineshkumarr@erytos.com">dineshkumarr@erytos.com</a>.</p>
+
+<!-- ───────────────────────────────────────────────── -->
+<h2>9. Changes to This Policy</h2>
+<p>We may update this Privacy Policy from time to time. When we do, we will update the "Last Updated" date at the top of this page and, where appropriate, notify users via an in-app message. Continued use of the app after changes become effective constitutes your acceptance of the revised policy.</p>
+
+<!-- ───────────────────────────────────────────────── -->
+<h2>10. Contact Us</h2>
+<p>If you have any questions, concerns, or requests regarding this Privacy Policy, please contact:</p>
+<address>
+  <strong>Erytos Technologies</strong><br/>
+  Email: <a href="mailto:dineshkumarr@erytos.com">dineshkumarr@erytos.com</a><br/>
+  Website: <a href="https://erytos.com" target="_blank">erytos.com</a>
+</address>
+
+<footer>
+  &copy; 2025 Erytos Technologies. All rights reserved. &nbsp;|&nbsp; Gerytos Monitor Privacy Policy
+</footer>
+
+</body>
+</html>
